@@ -19,14 +19,35 @@ require(tidyverse)
 ```
 
 # Predicting Fish Weight
-
+```{r}
+Perch<- filter(Fish,Species=="Perch")
+Perch<-select(Perch,-Species)
+```
 
 ## Perch
 
 ### Best Models
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ .,
+               data = Perch,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
+
+According to chart we can find the best models for predicting weight. According to this the best two regression models are height and width. The best overall model is Height.
 
 ### Best Two regressor model
 
+According to this the best two regression models are height and width.
 
 ## Pike
 
