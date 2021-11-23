@@ -90,10 +90,25 @@ Roach<-select(Roach,-Species)
 
 ### Best Models
 
+```{r}
+library(leaps)
+regsubsets.out <-
+    regsubsets(Weight ~ .,
+               data = Roach,
+               nbest = 1,       # 1 best model for each number of predictors
+               nvmax = NULL,    # NULL for no limit on number of variables
+               force.in = NULL, force.out = NULL,
+               method = "exhaustive")
+
+summary.out <- summary(regsubsets.out)
+as.data.frame(summary.out$outmat)
+library(car)
+subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
+```
+
+ According to chart we can find the best models for predicting weight. According to this the best two regression models are Length3 and Width. The best overall model is Width by having a smaller subset size.
 
 ### Best Two regressor model
 
-```{r}
-which.max(summary.out$adjr2)
-```
 ## Final Summary Statements
+
