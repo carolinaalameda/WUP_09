@@ -74,7 +74,7 @@ library(car)
 subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2")
 ```
 
- According to chart we can find the best models for predicting weight. According to this the best two regression models are Length1 and Length3. The best overall model is Length3
+ According to chart we can find the best models for predicting weight. According to this the best two regression models are Length1 and Length3. The best overall model is Length3.
 
 ### Best Two regressor model
 
@@ -112,3 +112,4 @@ subsets(regsubsets.out,statistic="adjr2",legend="bottomright",main="Adjusted R^2
 
 ## Final Summary Statements
 
+In conclusion, each section dealing with smelt adequately deals with showing the results by showing how the best model was found and how the best model with just two regressors was found. The best model with two regressors for Perch were height and width. For Pike they were Length1 and Length. Finally for Roach they were Length3 and Width.
